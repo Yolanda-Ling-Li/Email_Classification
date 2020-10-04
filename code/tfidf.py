@@ -5,33 +5,33 @@ import pandas as pd
 import numpy as np
 
 
-# def get_encode_info(file):
-#     with open(file, 'rb') as f:
-#         detector = UniversalDetector()
-#         for line in f.readlines():
-#             detector.feed(line)
-#             if detector.done:
-#                 break
-#         detector.close()
-#         return detector.result['encoding']
-#
-#
-# def convert_encode2utf8(file):
-#     f = open(file, 'rb')
-#     file_content = f.read()
-#     encode_info = get_encode_info(file)
-#     if encode_info == 'utf-8':
-#         return
-#     file_decode = file_content.decode(encode_info, 'ignore')
-#     file_encode = file_decode.encode('utf-8')
-#     f.close()
-#     f = open(file, 'wb')
-#     f.write(file_encode)
-#     f.close()
+def get_encode_info(file):
+    with open(file, 'rb') as f:
+        detector = UniversalDetector()
+        for line in f.readlines():
+            detector.feed(line)
+            if detector.done:
+                break
+        detector.close()
+        return detector.result['encoding']
+
+
+def convert_encode2utf8(file):
+    f = open(file, 'rb')
+    file_content = f.read()
+    encode_info = get_encode_info(file)
+    if encode_info == 'utf-8':
+        return
+    file_decode = file_content.decode(encode_info, 'ignore')
+    file_encode = file_decode.encode('utf-8')
+    f.close()
+    f = open(file, 'wb')
+    f.write(file_encode)
+    f.close()
 
 # 把data讀進來
 def read_dataSet():
-    names = os.listdir('/Users/bibi/Documents/CSC522/project/maildir')
+    names = os.listdir(r'C:\Users\ericb\Desktop\maildir')
     X = []
     Y = []
 
@@ -42,13 +42,13 @@ def read_dataSet():
 
 
 def read_name(idx, name, X, Y):
-    allList = os.walk('/Users/bibi/Documents/CSC522/project/maildir/' + name)
+    allList = os.walk(r'C:\Users\ericb\Desktop\maildir\\' + name)
     for root, dirs, files in allList:
         for file in files:
             file_name = root + '/' + file
 
             # transform encoding to utf-8
-            # convert_encode2utf8(file_name)
+            convert_encode2utf8(file_name)
 
             f = open(file_name, 'rb')
             X.append(f.read())
@@ -91,7 +91,54 @@ def get_idf(X):
 x, y = read_dataSet()
 idf = get_idf(x)
 print(np.asarray(idf[:20]))
-print(np.asarray(idf[len(idf)-21:]))
+# [['bcc' '1.0']
+#  ['cc' '1.0']
+#  ['charset' '1.0']
+#  ['content' '1.0']
+#  ['date' '1.0']
+#  ['encoding' '1.0']
+#  ['evans' '1.0']
+#  ['filename' '1.0']
+#  ['folder' '1.0']
+#  ['id' '1.0']
+#  ['javamail' '1.0']
+#  ['message' '1.0']
+#  ['mime' '1.0']
+#  ['origin' '1.0']
+#  ['plain' '1.0']
+#  ['subject' '1.0']
+#  ['text' '1.0']
+#  ['thyme' '1.0']
+#  ['transfer' '1.0']
+#  ['type' '1.0']]
+
+print(np.asarray(idf[len(idf) - 21:]))
+# [['zzp' '13.463428233647901']
+#  ['zzsygxgx' '13.463428233647901']
+#  ['zzsyjrxe' '13.463428233647901']
+#  ['zztmky' '13.463428233647901']
+#  ['zzv70asactaaqa5aeaamc' '13.463428233647901']
+#  ['zzvoge' '13.463428233647901']
+#  ['zzwyriqeuzgdapy59k830iuldikj7cgbt6v6dpd4720dkomzivepjdkb1rf6sdzeabikjctikmk0'
+#   '13.463428233647901']
+#  ['zzxsctwljcm9z' '13.463428233647901']
+#  ['zzz1' '13.463428233647901']
+#  ['zzz2' '13.463428233647901']
+#  ['zzz30q0fqqc' '13.463428233647901']
+#  ['zzzc00l1b0c' '13.463428233647901']
+#  ['zzzehjtdapc' '13.463428233647901']
+#  ['zzzipe' '13.463428233647901']
+#  ['zzzl7wxn4pc' '13.463428233647901']
+#  ['zzzoqjdwcpc' '13.463428233647901']
+#  ['zzzp3wq0npc' '13.463428233647901']
+#  ['zzzq61skaoc' '13.463428233647901']
+#  ['zzztalk' '13.463428233647901']
+#  ['zzzugorq00c' '13.463428233647901']
+#  ['åkesson' '13.463428233647901']]
+
+idf_df = pd.DataFrame(data=np.asarray(idf))
+idf_df.to_csv('../idf.csv')
+
 # names = 人名list  => 轉成數字索引
 # X = 文章list
 # X 去除特殊符號  扔到tfidf  去除停止詞
