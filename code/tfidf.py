@@ -1,24 +1,97 @@
 import os
+from chardet.universaldetector import UniversalDetector
+from sklearn.feature_extraction.text import TfidfVectorizer
+import pandas as pd
+import numpy as np
+
+
+# def get_encode_info(file):
+#     with open(file, 'rb') as f:
+#         detector = UniversalDetector()
+#         for line in f.readlines():
+#             detector.feed(line)
+#             if detector.done:
+#                 break
+#         detector.close()
+#         return detector.result['encoding']
+#
+#
+# def convert_encode2utf8(file):
+#     f = open(file, 'rb')
+#     file_content = f.read()
+#     encode_info = get_encode_info(file)
+#     if encode_info == 'utf-8':
+#         return
+#     file_decode = file_content.decode(encode_info, 'ignore')
+#     file_encode = file_decode.encode('utf-8')
+#     f.close()
+#     f = open(file, 'wb')
+#     f.write(file_encode)
+#     f.close()
 
 # 把data讀進來
-# Y_class = os.listdir('/Users/bibi/Documents/CSC522/project/maildir')
+def read_dataSet():
+    names = os.listdir('/Users/bibi/Documents/CSC522/project/maildir')
+    X = []
+    Y = []
 
-k = os.walk('/Users/bibi/Documents/CSC522/project/maildir/presto-k/junk_e_mail')
-for root, dirs, files in allList:
-#   列出目前讀取到的路徑
-  print("path：", root)
-#   列出在這個路徑下讀取到的資料夾(第一層讀完才會讀第二層)
-  print("directory：", dirs)
-#   列出在這個路徑下讀取到的所有檔案
-  print("file：", files)
-print(k)
+    for idx, name in enumerate(names):
+        read_name(idx, name, X, Y)
 
-# f = open('/Users/bibi/Documents/CSC522/project/maildir/presto-k/junk_e_mail/1.', 'r')
+    return X, Y
+
+
+def read_name(idx, name, X, Y):
+    allList = os.walk('/Users/bibi/Documents/CSC522/project/maildir/' + name)
+    for root, dirs, files in allList:
+        for file in files:
+            file_name = root + '/' + file
+
+            # transform encoding to utf-8
+            # convert_encode2utf8(file_name)
+
+            f = open(file_name, 'rb')
+            X.append(f.read())
+            f.close()
+            Y.append(idx)
+
+
+def split_space(X):
+    for idx, x in enumerate(X):
+        X[idx] = x.split(" ")
+    return X
+
+
+# f = open('/Users/bibi/Documents/CSC522/project/maildir/presto-k/junk_e_mail/1.', 'rb')
 # s = f.read()
 # f.close()
 
+# xTest = []
+#
+# al = os.walk('/Users/bibi/Documents/CSC522/project/maildir/presto-k/junk_e_mail/')
+# for root, dirs, files in al:
+#     for file in files:
+#         file_name = root + '/' + file
+#         f = open(file_name, 'r')
+#         xTest.append(f.read())
+#         f.close()
 
-# Y_class = 人名list  => 轉成數字索引
+def get_idf(X):
+    tfidf_vectorizer = TfidfVectorizer(analyzer='word', stop_words='english')
+    tfidf_vectorizer.fit_transform(X)
+    tfidf_tokens = tfidf_vectorizer.get_feature_names()
+
+    idf = tfidf_vectorizer.idf_
+    idf_list = zip(tfidf_tokens, idf)
+
+    idf_list_sorted = sorted(idf_list, key=lambda x: x[1])
+    return idf_list_sorted
+
+
+x, y = read_dataSet()
+idf = get_idf(x)
+print(np.asarray(idf[:20]))
+print(np.asarray(idf[len(idf)-21:]))
+# names = 人名list  => 轉成數字索引
 # X = 文章list
 # X 去除特殊符號  扔到tfidf  去除停止詞
-
