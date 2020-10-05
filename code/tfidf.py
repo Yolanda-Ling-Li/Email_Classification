@@ -3,6 +3,7 @@ from chardet.universaldetector import UniversalDetector
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
 import numpy as np
+import re
 
 
 def get_encode_info(file):
@@ -28,6 +29,7 @@ def convert_encode2utf8(file):
     f = open(file, 'wb')
     f.write(file_encode)
     f.close()
+
 
 # 把data讀進來
 def read_dataSet():
@@ -66,15 +68,16 @@ def split_space(X):
 # s = f.read()
 # f.close()
 
-# xTest = []
-#
-# al = os.walk('/Users/bibi/Documents/CSC522/project/maildir/presto-k/junk_e_mail/')
-# for root, dirs, files in al:
-#     for file in files:
-#         file_name = root + '/' + file
-#         f = open(file_name, 'r')
-#         xTest.append(f.read())
-#         f.close()
+xTest = []
+
+al = os.walk(r'C:\Users\ericb\Desktop\maildir/presto-k/junk_e_mail/')
+for root, dirs, files in al:
+    for file in files:
+        file_name = root + '/' + file
+        f = open(file_name, 'r')
+        xTest.append(f.read())
+        f.close()
+
 
 def get_idf(X):
     tfidf_vectorizer = TfidfVectorizer(analyzer='word', stop_words='english')
@@ -88,9 +91,9 @@ def get_idf(X):
     return idf_list_sorted
 
 
-x, y = read_dataSet()
-idf = get_idf(x)
-print(np.asarray(idf[:20]))
+# x, y = read_dataSet()
+# idf = get_idf(x)
+# print(np.asarray(idf[:20]))
 # [['bcc' '1.0']
 #  ['cc' '1.0']
 #  ['charset' '1.0']
@@ -112,7 +115,7 @@ print(np.asarray(idf[:20]))
 #  ['transfer' '1.0']
 #  ['type' '1.0']]
 
-print(np.asarray(idf[len(idf) - 21:]))
+# print(np.asarray(idf[len(idf) - 21:]))
 # [['zzp' '13.463428233647901']
 #  ['zzsygxgx' '13.463428233647901']
 #  ['zzsyjrxe' '13.463428233647901']
@@ -136,9 +139,26 @@ print(np.asarray(idf[len(idf) - 21:]))
 #  ['zzzugorq00c' '13.463428233647901']
 #  ['åkesson' '13.463428233647901']]
 
-idf_df = pd.DataFrame(data=np.asarray(idf))
-idf_df.to_csv('../idf.csv')
+# idf_df = pd.DataFrame(data=np.asarray(idf))
+# idf_df.to_csv('../idf.csv')
 
-# names = 人名list  => 轉成數字索引
-# X = 文章list
-# X 去除特殊符號  扔到tfidf  去除停止詞
+idf_low = pd.read_csv('../idf_low.csv')
+idf_low = set(idf_low['0'])
+
+
+def remove_sp_symbol(text):
+    comp = re.compile('[^A-Z^a-z^0-9^ ]')
+    return comp.sub(' ', text)
+
+
+xtt = []
+
+for text in xTest:
+    textR = remove_sp_symbol(text)
+    textList = textR.lower().split(" ")
+    for idx, t in enumerate(textList):
+        if t in idf_low:
+            textList[idx] = ''
+    xtt.append(' '.join(textList))
+
+print(xtt[0])
