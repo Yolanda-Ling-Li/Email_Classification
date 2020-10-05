@@ -2,8 +2,8 @@ import os
 from chardet.universaldetector import UniversalDetector
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
-import numpy as np
 import re
+from nltk.corpus import stopwords
 
 
 def get_encode_info(file):
@@ -31,7 +31,6 @@ def convert_encode2utf8(file):
     f.close()
 
 
-# 把data讀進來
 def read_dataSet():
     names = os.listdir(r'C:\Users\ericb\Desktop\maildir')
     X = []
@@ -58,25 +57,19 @@ def read_name(idx, name, X, Y):
             Y.append(idx)
 
 
-def split_space(X):
-    for idx, x in enumerate(X):
-        X[idx] = x.split(" ")
-    return X
-
-
 # f = open('/Users/bibi/Documents/CSC522/project/maildir/presto-k/junk_e_mail/1.', 'rb')
 # s = f.read()
 # f.close()
 
-xTest = []
-
-al = os.walk(r'C:\Users\ericb\Desktop\maildir/presto-k/junk_e_mail/')
-for root, dirs, files in al:
-    for file in files:
-        file_name = root + '/' + file
-        f = open(file_name, 'r')
-        xTest.append(f.read())
-        f.close()
+# xTest = []
+#
+# al = os.walk(r'C:\Users\ericb\Desktop\maildir/presto-k/junk_e_mail/')
+# for root, dirs, files in al:
+#     for file in files:
+#         file_name = root + '/' + file
+#         f = open(file_name, 'r')
+#         xTest.append(f.read())
+#         f.close()
 
 
 def get_idf(X):
@@ -90,6 +83,34 @@ def get_idf(X):
     idf_list_sorted = sorted(idf_list, key=lambda x: x[1])
     return idf_list_sorted
 
+
+def get_idf_low():
+    idf_low = pd.read_csv('../idf_low.csv')
+    idf_low_set = set(idf_low['0'])
+    return idf_low_set
+
+
+def remove_sp_symbol(text):
+    comp = re.compile('[^A-Z^a-z^0-9^ ]')
+    return comp.sub(' ', text)
+
+
+# remove special symbol, low idf words and stop words
+def extract_feature(X):
+    x_feature = []
+    stop_words = set(stopwords.words('english'))
+    idf_low = get_idf_low()
+    for text in X:
+        textList = remove_sp_symbol(text).lower().split(" ")
+        for idx, t in enumerate(textList):
+            if t in idf_low or t in stop_words or t == 'x':
+                textList[idx] = ''
+        x_feature.append(' '.join(textList))
+    return x_feature
+
+
+qewx = extract_feature(xTest)
+print(qewx[0])
 
 # x, y = read_dataSet()
 # idf = get_idf(x)
@@ -141,24 +162,3 @@ def get_idf(X):
 
 # idf_df = pd.DataFrame(data=np.asarray(idf))
 # idf_df.to_csv('../idf.csv')
-
-idf_low = pd.read_csv('../idf_low.csv')
-idf_low = set(idf_low['0'])
-
-
-def remove_sp_symbol(text):
-    comp = re.compile('[^A-Z^a-z^0-9^ ]')
-    return comp.sub(' ', text)
-
-
-xtt = []
-
-for text in xTest:
-    textR = remove_sp_symbol(text)
-    textList = textR.lower().split(" ")
-    for idx, t in enumerate(textList):
-        if t in idf_low:
-            textList[idx] = ''
-    xtt.append(' '.join(textList))
-
-print(xtt[0])

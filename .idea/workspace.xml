@@ -4,7 +4,6 @@
     <list default="true" id="5b2b2e7b-c0e0-44d7-8bc4-863e65e96d06" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/tfidf.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/tfidf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idf.csv" beforeDir="false" afterPath="$PROJECT_DIR$/idf.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +36,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="vcs.Subversion" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
     <configuration name="tfidf" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -81,7 +80,7 @@
       <workItem from="1601763049801" duration="10064000" />
       <workItem from="1601780300473" duration="2979000" />
       <workItem from="1601790782705" duration="76000" />
-      <workItem from="1601791033423" duration="9905000" />
+      <workItem from="1601791033423" duration="14933000" />
     </task>
     <servers />
   </component>
@@ -93,33 +92,33 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="497" y="163" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1601781599033" />
-    <state width="2005" height="507" key="GridCell.Tab.0.bottom" timestamp="1601889157929">
+    <state width="2005" height="389" key="GridCell.Tab.0.bottom" timestamp="1601937510755">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1238" height="133" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1601779210627" />
-    <state width="2005" height="507" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1601889157929" />
-    <state width="2005" height="507" key="GridCell.Tab.0.center" timestamp="1601889157929">
+    <state width="2005" height="389" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1601937510755" />
+    <state width="2005" height="389" key="GridCell.Tab.0.center" timestamp="1601937510755">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1238" height="133" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1601779210625" />
-    <state width="2005" height="507" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1601889157929" />
-    <state width="2005" height="507" key="GridCell.Tab.0.left" timestamp="1601889157929">
+    <state width="2005" height="389" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1601937510755" />
+    <state width="2005" height="389" key="GridCell.Tab.0.left" timestamp="1601937510755">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1238" height="133" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1601779210624" />
-    <state width="2005" height="507" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1601889157929" />
-    <state width="2005" height="507" key="GridCell.Tab.0.right" timestamp="1601889157929">
+    <state width="2005" height="389" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1601937510755" />
+    <state width="2005" height="389" key="GridCell.Tab.0.right" timestamp="1601937510755">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1238" height="133" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1601779210626" />
-    <state width="2005" height="507" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1601889157929" />
-    <state x="391" y="101" key="SettingsEditor" timestamp="1601797746201">
+    <state width="2005" height="389" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1601937510755" />
+    <state x="391" y="105" key="SettingsEditor" timestamp="1601935928312">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="141" y="39" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1601764101273" />
-    <state x="391" y="101" key="SettingsEditor/0.0.2048.1112@0.0.2048.1112" timestamp="1601797746201" />
+    <state x="391" y="105" key="SettingsEditor/0.0.2048.1112@0.0.2048.1112" timestamp="1601935928312" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/P17$tfidf.coverage" NAME="tfidf Coverage Results" MODIFIED="1601889157923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
+    <SUITE FILE_PATH="coverage/P17$tfidf.coverage" NAME="tfidf Coverage Results" MODIFIED="1601937139417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
   </component>
 </project>
