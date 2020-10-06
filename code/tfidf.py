@@ -1,4 +1,6 @@
+import os
 import pandas as pd
+import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 
@@ -14,12 +16,13 @@ def get_idf(x):
     return idf_list_sorted
 
 
-def get_idf_low():
-    # idf = get_idf(x)
-    # idf_df = pd.DataFrame(data=np.asarray(idf))
-    # idf_df.to_csv('../idf.csv')
-    # idf_df.head(36).loc[:, '0': '1'].to_csv('../idf_low.csv')
-    idf_low = pd.read_csv('../idf_low.csv')
+def get_idf_low(x):
+    data_dir = os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(__file__))), "data")
+    idf = get_idf(x)
+    idf_df = pd.DataFrame(data=np.asarray(idf))
+    idf_df.to_csv(data_dir + '/idf.csv')
+    idf_df.head(36).loc[:, '0': '1'].to_csv('../idf_low.csv')
+    idf_low = pd.read_csv(data_dir + '/idf_low.csv')
     idf_low_set = set(idf_low['0'])
     return idf_low_set
 

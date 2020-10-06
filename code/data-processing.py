@@ -69,7 +69,7 @@ def remove_sp_symbol(text):
 def extract_feature(x):
     x_featured = []
     stop_words = set(stopwords.words('english'))
-    idf_low = get_idf_low()
+    idf_low = get_idf_low(x)
     for text in x:
         textList = remove_sp_symbol(text).lower().split(" ")
         for idx, t in enumerate(textList):
@@ -80,29 +80,20 @@ def extract_feature(x):
 
 
 def export_featured_data():
-    # xTest = []
-    # y = []
-    # al = os.walk(r'C:\Users\ericb\Desktop\maildir/presto-k/junk_e_mail/')
-    # for root, dirs, files in al:
-    #     for file in files:
-    #         file_name = root + '/' + file
-    #         f = open(file_name, 'r')
-    #         xTest.append(f.read())
-    #         f.close()
-    #         y.append('presto-k')
+    data_dir = os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(__file__))), "data")
 
     x, y, y_class = read_dataSet()
     x = extract_feature(x)
     data = list(zip(x, y))
     df = pd.DataFrame(data=np.asarray(data))
-    df.to_csv('../data.csv')
+    df.to_csv(data_dir + '/data.csv')
     return y_class
 
 
 def main():
-    # y = export_featured_data()
+    y_class = export_featured_data()
+    print(y_class)
     # train_w2v()
-    data_dir = os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(__file__))), "data/Q3.csv")
 
 
 if __name__ == "__main__":

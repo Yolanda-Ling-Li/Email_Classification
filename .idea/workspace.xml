@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b2b2e7b-c0e0-44d7-8bc4-863e65e96d06" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/P17.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/P17.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/data-processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/data-processing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/tfidf.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/tfidf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idf_low.csv" beforeDir="false" afterPath="$PROJECT_DIR$/idf_low.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +103,7 @@
       <workItem from="1601763049801" duration="10064000" />
       <workItem from="1601780300473" duration="2979000" />
       <workItem from="1601790782705" duration="76000" />
-      <workItem from="1601791033423" duration="20000000" />
+      <workItem from="1601791033423" duration="20368000" />
     </task>
     <servers />
   </component>
