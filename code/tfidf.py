@@ -21,7 +21,7 @@ def get_idf_low(x):
     idf = get_idf(x)
     idf_df = pd.DataFrame(data=np.asarray(idf))
     idf_df.to_csv(data_dir + '/idf.csv')
-    idf_df.head(36).loc[:, '0': '1'].to_csv('../idf_low.csv')
+    idf_df.head(36).loc[:, '0': '1'].to_csv(data_dir + '/idf_low.csv')
     idf_low = pd.read_csv(data_dir + '/idf_low.csv')
     idf_low_set = set(idf_low['0'])
     return idf_low_set

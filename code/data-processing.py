@@ -41,7 +41,7 @@ def read_name(idx, name, x, y, path):
             # transform encoding to utf-8
             convert_encode2utf8(file_name)
 
-            f = open(file_name, 'rb')
+            f = open(file_name, 'r')
             x.append(f.read())
             f.close()
             y.append(idx)
@@ -84,8 +84,10 @@ def export_featured_data():
 
     x, y, y_class = read_dataSet()
     x = extract_feature(x)
+    with open(data_dir + '/data.txt', 'w') as f:
+        f.write("\n*\n".join(x))
     data = list(zip(x, y))
-    df = pd.DataFrame(data=np.asarray(data))
+    df = pd.DataFrame(data=data, columns=['x', 'y'])
     df.to_csv(data_dir + '/data.csv')
     return y_class
 
