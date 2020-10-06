@@ -2,3 +2,4 @@ maildir
 data
 .DS_Store
 .idea
+code/__pycache__/

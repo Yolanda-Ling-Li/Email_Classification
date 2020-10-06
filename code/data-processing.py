@@ -49,7 +49,7 @@ def read_name(idx, name, x, y, path):
 
 def read_dataSet():
     # data set path
-    path = r'C:\Users\ericb\Desktop\maildir'
+    path = r'..\maildir'
     names = os.listdir(path)
     x = []
     y = []
@@ -89,6 +89,8 @@ def export_featured_data():
     data = list(zip(x, y))
     df = pd.DataFrame(data=data, columns=['x', 'y'])
     df.to_csv(data_dir + '/data.csv')
+    d = pd.DataFrame(data=y_class, columns=['y_class'])
+    d.to_csv(data_dir + '/y_class.csv')
     return y_class
 
 
