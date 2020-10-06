@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b2b2e7b-c0e0-44d7-8bc4-863e65e96d06" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/P17.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/P17.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/code/data-processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/data-processing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/tfidf.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/tfidf.py" afterDir="false" />
+>>>>>>> 7be93b314013536750c6c8aff30a11956585d114
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +45,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
+<<<<<<< HEAD
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -53,6 +59,31 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.word2vec">
+=======
+  <component name="RunManager" selected="Python.data-processing">
+    <configuration name="data-processing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="P17" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/code/data-processing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+>>>>>>> 7be93b314013536750c6c8aff30a11956585d114
     <configuration name="tfidf" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="P17" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -99,7 +130,11 @@
     </configuration>
     <recent_temporary>
       <list>
+<<<<<<< HEAD
         <item itemvalue="Python.word2vec" />
+=======
+        <item itemvalue="Python.data-processing" />
+>>>>>>> 7be93b314013536750c6c8aff30a11956585d114
         <item itemvalue="Python.tfidf" />
       </list>
     </recent_temporary>
@@ -117,10 +152,14 @@
       <workItem from="1601763049801" duration="10064000" />
       <workItem from="1601780300473" duration="2979000" />
       <workItem from="1601790782705" duration="76000" />
+<<<<<<< HEAD
       <workItem from="1601791033423" duration="9905000" />
       <workItem from="1601936345216" duration="476000" />
       <workItem from="1601936849225" duration="791000" />
       <workItem from="1601937690976" duration="8626000" />
+=======
+      <workItem from="1601791033423" duration="20368000" />
+>>>>>>> 7be93b314013536750c6c8aff30a11956585d114
     </task>
     <servers />
   </component>
@@ -145,31 +184,31 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="497" y="163" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1601781599033" />
-    <state width="2005" height="507" key="GridCell.Tab.0.bottom" timestamp="1601889157929">
+    <state width="2005" height="389" key="GridCell.Tab.0.bottom" timestamp="1601942431147">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1238" height="133" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1601779210627" />
-    <state width="2005" height="507" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1601889157929" />
-    <state width="2005" height="507" key="GridCell.Tab.0.center" timestamp="1601889157929">
+    <state width="2005" height="389" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1601942431147" />
+    <state width="2005" height="389" key="GridCell.Tab.0.center" timestamp="1601942431147">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1238" height="133" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1601779210625" />
-    <state width="2005" height="507" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1601889157929" />
-    <state width="2005" height="507" key="GridCell.Tab.0.left" timestamp="1601889157929">
+    <state width="2005" height="389" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1601942431147" />
+    <state width="2005" height="389" key="GridCell.Tab.0.left" timestamp="1601942431147">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1238" height="133" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1601779210624" />
-    <state width="2005" height="507" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1601889157929" />
-    <state width="2005" height="507" key="GridCell.Tab.0.right" timestamp="1601889157929">
+    <state width="2005" height="389" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1601942431147" />
+    <state width="2005" height="389" key="GridCell.Tab.0.right" timestamp="1601942431147">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state width="1238" height="133" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1601779210626" />
-    <state width="2005" height="507" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1601889157929" />
-    <state x="391" y="101" key="SettingsEditor" timestamp="1601797746201">
+    <state width="2005" height="389" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1601942431147" />
+    <state x="391" y="105" key="SettingsEditor" timestamp="1601935928312">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="141" y="39" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1601764101273" />
-    <state x="391" y="101" key="SettingsEditor/0.0.2048.1112@0.0.2048.1112" timestamp="1601797746201" />
+    <state x="391" y="105" key="SettingsEditor/0.0.2048.1112@0.0.2048.1112" timestamp="1601935928312" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -180,7 +219,12 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+<<<<<<< HEAD
     <SUITE FILE_PATH="coverage/P17$tfidf.coverage" NAME="tfidf Coverage Results" MODIFIED="1601889157923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
     <SUITE FILE_PATH="coverage/P17$word2vec.coverage" NAME="word2vec Coverage Results" MODIFIED="1601948286144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
+=======
+    <SUITE FILE_PATH="coverage/P17$tfidf.coverage" NAME="tfidf Coverage Results" MODIFIED="1601941693469" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
+    <SUITE FILE_PATH="coverage/P17$data_processing.coverage" NAME="data-processing Coverage Results" MODIFIED="1601941955153" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/code" />
+>>>>>>> 7be93b314013536750c6c8aff30a11956585d114
   </component>
 </project>
