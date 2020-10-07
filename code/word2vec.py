@@ -9,29 +9,33 @@ from gensim.corpora.dictionary import Dictionary
 
 
 class Config():
-    max_len = 512  # 句长
-    vocabulary_dim = 64    #词向量维数
+    max_len = 256  # 句长
+    vocabulary_dim = 1    #词向量维数
     min_count = 5  # 过滤频数小于5的词语
     max_vocab_size = 100000 #如果所有独立单词个数超过这个，则就消除掉其中最不频繁的一个。
     window_size = 8  # 窗口大小
     n_iterations = 5 # 迭代次数，默认为5 #定义词向量模型
     cpu_count = multiprocessing.cpu_count()
     model_dir = os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(__file__))),"data")
-    data_dir = os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(__file__))),"data/Q3.csv")
+    data_dir = os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(__file__))),"data/data.csv")
 
 
 
-def w2v_load_data(data_dir, model_dir):
+def w2v_load_data(data_dir):
     print("Initialize...")
     cleanData = pd.read_csv(data_dir)
     x_data = []
     y_data = []
 
     for i in range(len(cleanData["x"])):
-        x_data += [' '.join(re.split(' +|\n+', cleanData["x"][i])).strip()]
+        x_data += [re.split(' ',' '.join(re.split(' +|\n+', cleanData["x"][i])).strip())]
         y_data += [cleanData["y"][i]]
+    # m = []
+    # for i in range(len(x_data)):
+    #     m += [len(x_data[i])]
+    # m = np.array(m)
+    # print("%.3f  %.3f  %.3f  %.3f" % (np.mean(m), np.std(m), np.median(m), np.percentile(m, 75)))
 
-    np.save(os.path.join(model_dir,'y_data.npy'), np.array(y_data))  # y_data存为npy
     return x_data, y_data
 
 
@@ -76,26 +80,27 @@ def word2vec_model(data, config):
     for word, index in index_dict.items():  # 从索引为1的词语开始，对每个词语对应其词向量
         embedding_weights[index, :] = word_vectors[word]
 
-    x_data = np.zeros((n_symbols, config.max_len)) #转化为词向量代替词语的向量矩阵
+    x_data = np.zeros((len(data), config.max_len)) #转化为词向量代替词语的向量矩阵
     for i, the_text in enumerate(data):
         for j, word in enumerate(the_text):
-            if word in word_vectors:
-                x_data[i][j] = np.mean(word_vectors[word])
+            if j < config.max_len and word in word_vectors:
+                x_data[i][j] = word_vectors[word]
 
     return n_symbols, embedding_weights, x_index, x_data
 
 
 def train_w2v():
     config = Config()
-    x_data, y_data = w2v_load_data(config.data_dir, config.model_dir)
+    x_data, y_data = w2v_load_data(config.data_dir)
 
     print('Training a Word2vec model...')
     n_symbols, embedding_weights, x_index, x_data = word2vec_model(data=x_data,config=config)
 
+    w2v_data = list(zip(x_data, y_data))
+    df = pd.DataFrame(data=w2v_data, columns=['x', 'y'])
+    df.to_csv(os.path.join(config.model_dir, 'w2v_data.csv'))
+
     return n_symbols, embedding_weights, x_index
-
-
-
 
 
 def main():
