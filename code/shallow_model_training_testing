@@ -1,0 +1,76 @@
+import numpy as np
+import pandas as pd
+import re
+from imblearn.over_sampling import RandomOverSampler
+from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import f1_score
+from sklearn.metrics import accuracy_score
+
+
+cleanData = pd.read_csv("data.csv")
+x_data = np.zeros((len(cleanData["x"]), 256))
+y_data = np.zeros(len(cleanData["x"]))
+for i in range(len(cleanData["x"])):
+    one_x = re.split(' +', ' '.join(re.split(' +|\n+', cleanData["x"][i].replace("[", "").replace("]", ""))).strip())
+    for j, x in enumerate(one_x):
+        x_data[i][j] = float(x)
+    y_data[i] = int(cleanData["y"][i])
+ros = RandomOverSampler(random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(x_data, y_data, test_size=0.3, random_state=42)
+F_data, L_data = ros.fit_sample(X_train, y_train)
+print(F_data.shape, L_data.shape, X_test.shape, y_test.shape)
+
+
+
+#svm
+clf1 = SVC(C=1, gamma=1)
+clf1.fit(F_data, L_data)
+L_pred1 = clf1.predict(F_data)
+y_pred1 = clf1.predict(X_test)
+train1_acc = accuracy_score(L_data, L_pred1)
+train1_f1 = f1_score(L_data, L_pred1, average='macro')
+test1_acc = accuracy_score(y_test, y_pred1)
+test1_f1 = f1_score(y_test, y_pred1, average='macro')
+print('---------------------------')
+print('results for SVM')
+print('training accuracy and f1 score')
+print(train1_acc, train1_f1)
+print('test accuracy and f1 score')
+print(test1_acc, test1_f1)
+
+# knn
+clf2 = KNeighborsClassifier(n_neighbors=9)
+clf2.fit(F_data, L_data)
+L_pred2 = clf2.predict(F_data)
+y_pred2 = clf2.predict(X_test)
+train2_acc = accuracy_score(L_data, L_pred2)
+train2_f1 = f1_score(L_data, L_pred2, average='macro')
+test2_acc = accuracy_score(y_test, y_pred2)
+test2_f1 = f1_score(y_test, y_pred2, average='macro')
+print('---------------------------')
+print('results for KNN')
+print('training accuracy and f1 score')
+print(train2_acc, train2_f1)
+print('test accuracy and f1 score')
+print(test2_acc, test2_f1)
+
+# rf
+clf3 = RandomForestClassifier(n_estimators=250, random_state=0)
+clf3.fit(F_data, L_data)
+L_pred3 = clf3.predict(F_data)
+y_pred3 = clf3.predict(X_test)
+train3_acc = accuracy_score(L_data, L_pred3)
+train3_f1 = f1_score(L_data, L_pred3, average='macro')
+test3_acc = accuracy_score(y_test, y_pred3)
+test3_f1 = f1_score(y_test, y_pred3, average='macro')
+print('---------------------------')
+print('results for RF')
+print('training accuracy and f1 score')
+print(train3_acc, train3_f1)
+print('test accuracy and f1 score')
+print(test3_acc, test3_f1)
+                                                                      
+                                                                         
