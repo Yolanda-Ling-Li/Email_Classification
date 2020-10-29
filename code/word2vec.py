@@ -12,13 +12,11 @@ class Config():
     max_len = 256  # 句长
     vocabulary_dim = 1    #词向量维数
     min_count = 5  # 过滤频数小于5的词语
-    max_vocab_size = 100000 #如果所有独立单词个数超过这个，则就消除掉其中最不频繁的一个。
     window_size = 8  # 窗口大小
     n_iterations = 5 # 迭代次数，默认为5 #定义词向量模型
     cpu_count = multiprocessing.cpu_count()
     model_dir = os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(__file__))),"data")
     data_dir = os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(__file__))),"data/data.csv")
-
 
 
 def w2v_load_data(data_dir):
