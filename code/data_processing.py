@@ -141,6 +141,14 @@ def sampling():
     l = np.random.choice(low, sample_number, replace=False)
     return h, m, l
 
+def rename_class(data, y_class):
+    y_list = list(y_class.keys())
+    for idx, row in data.iterrows():
+        data.loc[idx, 'y'] = y_list.index(row['y'])
+    y_renamed = {}
+    for idx, y in enumerate(y_list):
+        y_renamed[idx] = y_class[y]
+    return data, y_renamed
 
 # get sample data
 def get_sample_data():
@@ -153,7 +161,8 @@ def get_sample_data():
     low = data.loc[data['y'].isin(l)]
     sample_data = pd.concat([high, mid, low])
     y = {i: y_class[i] for i in np.concatenate((h, m, l))}
-    return sample_data, y
+    x_renamed, y_renamed = rename_class(sample_data, y)
+    return x_renamed, y_renamed
 
 
 # data under sampling
@@ -167,6 +176,8 @@ def under_sampled_data():
     df = pd.DataFrame(data=data_rus, columns=['x', 'y'])
     df.to_csv(data_dir + '/under_sample_data.csv')
     # counter = collections.Counter(y_rus)
+    d = pd.DataFrame.from_dict(y_class, orient='index', columns=['y_class'])
+    d.to_csv(data_dir + '/under_sample_y_class.csv')
     return data_rus, y_rus, y_class
 
 
