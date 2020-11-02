@@ -26,6 +26,7 @@ def train_w2v():
     x_test = x_data[len(X_train):]
     y_train = pd.get_dummies(y_train)
     y_test = pd.get_dummies(y_test)
+    predict_save(config.data_dir, x_test, y_test)
 
     print('Setting up Arrays for Keras Embedding Layer...')
     model = w2v_cnn_lstm_model(n_symbols=n_symbols, embedding_weights=embedding_weights, config=config)
@@ -35,20 +36,16 @@ def train_w2v():
     print(model.summary())
 
     print('Train the Model Word2vec+LSTM...')
-    cbs = [ModelCheckpoint(os.path.join(config.data_dir, 'Word2Vec_LSTM_Model.hdf5'),  # 存储模型参数的路径
-                           monitor='val_loss', verbose=1, save_best_only=True, save_weights_only=False),
-           # 只存储效果最好loss最小时的模型参数
-           TensorBoard(log_dir=config.log_dir_file)]  # 存储loss，acc曲线文件的路径，可以用命令行+6006打开
-    model.fit(x_train, y_train, batch_size=config.batch_size, epochs=config.num_epoch, validation_split=0.2,
+    cbs = [ModelCheckpoint(os.path.join(config.data_dir, 'Word2Vec_LSTM_Model.hdf5'),
+                           monitor='accuracy', verbose=1, save_best_only=True, save_weights_only=False),
+           TensorBoard(log_dir=config.log_dir_file)]
+    model.fit(x_train, y_train, batch_size=config.batch_size, epochs=config.num_epoch, validation_split=config.valid_split,
               callbacks=cbs)
-
-    predict_save(config.data_dir, x_test, y_test)
 
 
 def main():
     train_w2v()
 
-    # 当.py文件被直接运行时将被运行，当.py文件以模块形式被导入时不被运行。
 
 
 if __name__ == "__main__":

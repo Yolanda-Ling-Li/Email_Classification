@@ -6,12 +6,8 @@ from sklearn.metrics import f1_score, accuracy_score
 
 
 def predict_save(data_dir, x_predict, y_predict):
-
-    x_predict = np.toarray(x_predict)
     np.save(os.path.join(data_dir, 'deep_test_x.npy'), x_predict)
-    y_predict = np.toarray(y_predict)
     np.save(os.path.join(data_dir, 'deep_test_y.npy'), y_predict)
-    return
 
 
 def predict_load(data_dir):
@@ -25,8 +21,8 @@ def predict():
     config = Config()
     model = load_model(os.path.join(config.data_dir, 'Word2Vec_LSTM_Model.hdf5'))
     x_true, y_true = predict_load(config.data_dir)
+    y_true = np.argmax(y_true, axis=1)
     y_pred = model.predict_classes(x_true)
-
 
     f1_score(y_true, y_pred, average='macro')
     print("Word2Vec_LSTM_Model:the test data accuracy is %f" % (accuracy_score(y_true, y_pred)))
