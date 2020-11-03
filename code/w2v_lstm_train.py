@@ -26,7 +26,7 @@ def train_w2v():
     x_test = x_data[len(X_train):]
     y_train = pd.get_dummies(y_train)
     y_test = pd.get_dummies(y_test)
-    predict_save(config.data_dir, x_test, y_test)
+    predict_save(config.data_dir, x_train, y_train, x_test, y_test)
 
     print('Setting up Arrays for Keras Embedding Layer...')
     model = w2v_cnn_lstm_model(n_symbols=n_symbols, embedding_weights=embedding_weights, config=config)

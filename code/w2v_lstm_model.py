@@ -19,7 +19,7 @@ class Config():
     min_count = 5
     batch_size = 32
     keep_prob = 0.2
-    num_epoch = 80
+    num_epoch = 60
     class_size = 15
     unit_size = 150
     valid_split = 0
