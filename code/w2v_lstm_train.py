@@ -47,6 +47,5 @@ def main():
     train_w2v()
 
 
-
 if __name__ == "__main__":
     main()
