@@ -1,0 +1,35 @@
+The project looks well-planned. Everything seems to be well thought. No suggestions for making the project stronger.
+Good Idea. Good variation in trying out different models. Explored both, basic classifiers and deep learning approach. More clarification on results could have been provided.
+It 's good that they summerize the result base on SVM & KNN &RG
+Really good analysis of three models. Would have been great to listen why random forest was performing better.
+I did not understand why it was important to find senders from the email?
+Good Presentation. One constructive comment - They focused more on providing results of various model comparison in conclusion, which should be a part of results and in conclusion, the final accuracy/other metric of chosen model should be displayed.
+
+
+
+The presentation was good and explained new concepts well.
+"
+As an extension to the work, the project could explore other architectures and compare their performances. Also, the results could include metrics such as Recall, Precision and F1-score."
+Expect to see more understanding in results, not only comparisons
+
+Very clear results and good conclusions. As a suggestion for your presentation, you could present your goal slightly better at the beginning. I had a hard time understanding your goal as the presentation went on.
+
+Shed some light on application of these models in real time scenarios. Vocabulary of a person tends to change over time, addressing this issue would be good.
+The idea is clear and novice but I failed to understand the practical implementation/use of this idea.
+Excellent work. The pitch can be improved a little by adding some details about  real world applications of classifying emails based on sender.
+It would be nice to see examples of the dataset to help better understand the processing. Overall very well done. 
+
+Have never worked on email classification based projects. There are not many applications of this project. It can be used to know the sender of the email but I didn't quite understand how its a really useful one. Good use of algorithms and comparison of results.
+
+I cut off some points because I did not quite understand the use case of this classifier. Yes you got great results and experiment setup was good, even results were convincing and conclusion well supported but I didn't get clear picture of why one would need this model.
+Too much detailed explanation about each and everything just made the presentation monotonous. Could have just explained the techniques in one statement and that would have made the pitch much stronger.
+Why data collection was tough and reasoning for data selection was very well explained, along with explanation on "why LSTM was used?". Though accuracy can be seen in the graph, it would have been better if one presenter spoke about accuracy of final model.
+Complete and good presentation
+I would be interested in seeing more details about the structure of the LSTM model since it outperformed the other models significantly
+You tried and analyzed a lot of methods in the project. I am sure you learn a lot. 
+More deep learning models such as Bi-LSTM could have been explored to see differences in performance.
+"Overall it's a good presentation. The team provides comprehensive explanation on methods they utilized in the project, and displayed their results in histogram. 
+There are a few suggestions. The team may include the reference paper and materials in the presentation. Besides, in the shallow models, it may not be fair to compare obviously overfitting/underfitting results with other models. They can try to fix the overfitting/underfitting as much as possible, then compare the results with random forest. That will makes the conclusion more convinving."
+The conclusion was clear and showed the results properly. The reason for data overfitting and underfitting wasn't mentioned may be that could be one of the points that the team could work on. The reason for choosing SVM,RF and KNN was specified. The accuracy scores and every aspect of it was defined and showcased. They could speak a bit more slowly as sometimes they seemed rushed. 
+Very well structured project, really liked the comparison of shallow models with LSTM. The pitch could have been made a bit stronger if they would have explained whether the context of the email was taken into consideration for classification or not.
+It would be good to see how this paradigm can be scaled to more classes (more senders). It seems like the best performing model, LSTM based ANN, will have to be reconfigured everytime a new sender needs to be added to the classification list. One possible extension to this project could be to test if senders of 2 emails are the same. In this way, once the system has a reference email for a sender it can be determined who the sender is. The issue could be that there are a lot of reference emails and the system takes too much time to match the senders. This can be made efficient by pre-pruning candidate reference emails using a shallow model first.
